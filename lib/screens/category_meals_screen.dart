@@ -16,11 +16,16 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   List<Meal> displayedMeals;
   var _loadedInitData = false;
 
+
+  // initStateはウィジェットが作成されたタイミングで一度処理される.
+  // ※コンテキスト(ModalRoute.of(context))を取得する前に実行されてしまう.
   @override
   void initState() {
     super.initState();
   }
 
+  // didChangeDependenciesは、その状態の初期化後、数回実行される.
+  // ※コンテキスト(ModalRoute.of(context))を取得できる.
   @override
   void didChangeDependencies() {
     if (!_loadedInitData) {
