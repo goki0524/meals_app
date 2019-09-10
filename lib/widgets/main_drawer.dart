@@ -46,14 +46,17 @@ class MainDrawer extends StatelessWidget {
             'Meals',
             Icons.restaurant,
             () {
-              Navigator.of(context).pushNamed('/');
+              // pushReplacementNamedはページスタック上の既存のページを新しいページに置き換える
+              // そのため、戻るボタンも存在しない.
+              // ログイン後の遷移など戻るボタンを表示したくない時にも使用する.
+              Navigator.of(context).pushReplacementNamed('/');
             }
           ),
           buildListTile(
             'Filters',
             Icons.settings,
             () {
-              Navigator.of(context).pushNamed(FiltersScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
             }
           ),
         ],

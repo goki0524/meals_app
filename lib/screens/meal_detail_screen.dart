@@ -89,6 +89,15 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.delete,
+        ),
+        onPressed: () {
+          // popはスタックの一番上にある画面を削除.
+          Navigator.of(context).pop(mealId);
+        },
+      ),
     );
   }
 }

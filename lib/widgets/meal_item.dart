@@ -10,14 +10,16 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem({
-    this.id,
-    this.title,
-    this.imageUrl,
-    this.duration,
-    this.complexity,
-    this.affordability,
+    @required this.id,
+    @required this.title,
+    @required this.imageUrl,
+    @required this.duration,
+    @required this.complexity,
+    @required this.affordability,
+    @required this.removeItem,
   });
 
   String get complexityText {
@@ -58,7 +60,13 @@ class MealItem extends StatelessWidget {
       arguments: {
         'id': id,
       },
-    );
+    ).then((result){
+      // ページが表示され、戻ったときにthenが発動する(プッシュしたページが削除されたときに)
+      if (result != null){
+        // popされた時に発動.
+        removeItem(result);
+      }
+    });
   }
 
   @override
